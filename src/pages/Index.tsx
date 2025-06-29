@@ -2,62 +2,51 @@
 import React, { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { ArrowUp, Users, ShoppingCart } from "lucide-react";
-import { HeroSection } from '@/components/HeroSection';
-import { CategorySection } from '@/components/CategorySection';
-import { AboutSection } from '@/components/AboutSection';
-import { ProductModal } from '@/components/ProductModal';
-import { CustomerCareSection } from '@/components/CustomerCareSection';
-import { Header } from '@/components/Header';
-import { Footer } from '@/components/Footer';
+import { Heart, Sparkles, Star } from "lucide-react";
+import { BangaramHero } from '@/components/BangaramHero';
+import { AboutBangaram } from '@/components/AboutBangaram';
+import { SpecialMoments } from '@/components/SpecialMoments';
+import { MessageSection } from '@/components/MessageSection';
+import { BangaramHeader } from '@/components/BangaramHeader';
+import { BangaramFooter } from '@/components/BangaramFooter';
 
 const Index = () => {
-  const [selectedProduct, setSelectedProduct] = useState(null);
-  const [showScrollTop, setShowScrollTop] = useState(false);
+  const [showHearts, setShowHearts] = useState(false);
 
-  React.useEffect(() => {
-    const handleScroll = () => {
-      setShowScrollTop(window.scrollY > 300);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+  const triggerHearts = () => {
+    setShowHearts(true);
+    setTimeout(() => setShowHearts(false), 3000);
   };
 
   return (
-    <div className="min-h-screen bg-heritage-cream">
-      <Header />
+    <div className="min-h-screen bg-bangaram-cream bangaram-texture">
+      <BangaramHeader />
       
       <main>
-        <HeroSection />
-        <CategorySection onProductSelect={setSelectedProduct} />
-        <AboutSection />
-        <CustomerCareSection />
+        <BangaramHero onHeartClick={triggerHearts} />
+        <AboutBangaram />
+        <SpecialMoments />
+        <MessageSection />
       </main>
 
-      <Footer />
+      <BangaramFooter />
 
-      {/* Product Modal */}
-      {selectedProduct && (
-        <ProductModal 
-          product={selectedProduct} 
-          onClose={() => setSelectedProduct(null)} 
-        />
-      )}
-
-      {/* Scroll to Top Button */}
-      {showScrollTop && (
-        <Button
-          onClick={scrollToTop}
-          className="fixed bottom-8 right-8 z-50 w-12 h-12 rounded-full heritage-button shadow-lg hover:shadow-xl transition-all duration-300"
-          size="icon"
-        >
-          <ArrowUp className="w-5 h-5" />
-        </Button>
+      {/* Floating Hearts Animation */}
+      {showHearts && (
+        <div className="fixed inset-0 pointer-events-none z-50">
+          {[...Array(10)].map((_, i) => (
+            <Heart
+              key={i}
+              className={`absolute text-bangaram-lavender animate-float opacity-70`}
+              style={{
+                left: `${Math.random() * 100}%`,
+                top: `${Math.random() * 100}%`,
+                animationDelay: `${Math.random() * 2}s`,
+                fontSize: `${20 + Math.random() * 20}px`
+              }}
+            />
+          ))}
+        </div>
       )}
     </div>
   );
