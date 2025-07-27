@@ -24,20 +24,16 @@ export default {
 				'inter': ['Inter', 'sans-serif'],
 			},
 			colors: {
-				// Pastel & Lavender Color Palette for Bangaram
-				'bangaram': {
-					lavender: '#E6E6FA',
-					'lavender-dark': '#D8BFD8',
-					'lavender-light': '#F0F0FF',
-					pastel: '#F5F5F5',
-					'pastel-pink': '#FFE4E6',
-					'pastel-blue': '#E6F3FF',
-					'pastel-mint': '#E6FFF0',
-					'pastel-peach': '#FFE6E6',
-					black: '#1a1a1a',
-					'soft-black': '#2d2d2d',
-					white: '#FFFFFF',
-					cream: '#FEFEFE',
+				// Old Money Color Palette
+				'heritage': {
+					navy: '#1a2332',
+					cream: '#f8f6f0',
+					gold: '#d4af37',
+					burgundy: '#722f37',
+					sage: '#9caf88',
+					charcoal: '#2d3748',
+					pearl: '#f7f5f3',
+					bronze: '#cd7f32',
 				},
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',
@@ -124,14 +120,6 @@ export default {
 						transform: 'scale(1)',
 						opacity: '1'
 					}
-				},
-				'float': {
-					'0%, 100%': {
-						transform: 'translateY(0px)'
-					},
-					'50%': {
-						transform: 'translateY(-10px)'
-					}
 				}
 			},
 			animation: {
@@ -139,7 +127,6 @@ export default {
 				'accordion-up': 'accordion-up 0.2s ease-out',
 				'fade-in': 'fade-in 0.6s ease-out',
 				'scale-in': 'scale-in 0.3s ease-out',
-				'float': 'float 3s ease-in-out infinite',
 			}
 		}
 	},
